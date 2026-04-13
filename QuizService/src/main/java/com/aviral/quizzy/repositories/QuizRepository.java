@@ -1,4 +1,4 @@
-package com.aviral.quizzy.rpositories;
+package com.aviral.quizzy.repositories;
 
 import com.aviral.quizzy.entities.Quiz;
 import org.springframework.data.jpa.repository.JpaRepository;

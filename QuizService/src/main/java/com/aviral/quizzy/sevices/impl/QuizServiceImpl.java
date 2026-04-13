@@ -1,19 +1,22 @@
 package com.aviral.quizzy.sevices.impl;
 
 import com.aviral.quizzy.entities.Quiz;
-import com.aviral.quizzy.rpositories.QuizRepository;
+import com.aviral.quizzy.repositories.QuizRepository;
+import com.aviral.quizzy.sevices.QuestionClient;
 import com.aviral.quizzy.sevices.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class QuizServiceImpl implements QuizService {
 
     @Autowired
     private QuizRepository quizRepository;
+
+    @Autowired
+    private QuestionClient questionClient;
 
     @Override
     public Quiz add(Quiz quiz) {
@@ -22,13 +25,20 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public List<Quiz> get() {
-        return quizRepository.findAll();
+        List<Quiz> quizzes =  quizRepository.findAll();
+
+        return quizzes.stream().peek(quiz ->
+                quiz.setQuestions(questionClient.getQuestionsOfQuiz(quiz.getId()))).toList();
     }
 
     @Override
     public Quiz get(Long id) {
-        return quizRepository.findById(id)
+        Quiz quiz = quizRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Quiz not found!"));
+
+        quiz.setQuestions(questionClient.getQuestionsOfQuiz(quiz.getId()));
+        return quiz;
+
 //        Optional<Quiz> quizData = quizRepository.findById(id);
 //
 //        if (quizData.isPresent())
