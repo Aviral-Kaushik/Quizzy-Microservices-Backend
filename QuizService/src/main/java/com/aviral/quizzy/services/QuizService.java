@@ -1,4 +1,4 @@
-package com.aviral.quizzy.sevices;
+package com.aviral.quizzy.services;
 
 import com.aviral.quizzy.entities.Quiz;
 

@@ -1,7 +1,7 @@
 package com.aviral.quizzy.controllers;
 
 import com.aviral.quizzy.entities.Quiz;
-import com.aviral.quizzy.sevices.QuizService;
+import com.aviral.quizzy.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

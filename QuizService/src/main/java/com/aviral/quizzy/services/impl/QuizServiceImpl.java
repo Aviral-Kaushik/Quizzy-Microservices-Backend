@@ -1,9 +1,9 @@
-package com.aviral.quizzy.sevices.impl;
+package com.aviral.quizzy.services.impl;
 
 import com.aviral.quizzy.entities.Quiz;
 import com.aviral.quizzy.repositories.QuizRepository;
-import com.aviral.quizzy.sevices.QuestionClient;
-import com.aviral.quizzy.sevices.QuizService;
+import com.aviral.quizzy.services.QuestionClient;
+import com.aviral.quizzy.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
